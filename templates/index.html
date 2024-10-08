@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Video Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-size: 18px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Instagram Video Downloader</h1>
+        <form id="downloadForm" method="POST" action="/download">
+            <label for="url">Enter Instagram Post URL:</label>
+            <input type="text" id="url" name="url" placeholder="Paste Instagram post URL" required>
+            <button type="submit">Download Video</button>
+        </form>
+        <div class="error" id="errorMessage"></div>
+    </div>
+
+    <script>
+        document.getElementById('downloadForm').addEventListener('submit', function(e) {
+            const urlInput = document.getElementById('url').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Basic URL validation
+            if (!urlInput.includes('instagram.com')) {
+                e.preventDefault();
+                errorMessage.innerText = "Please enter a valid Instagram URL.";
+            }
+        });
+    </script>
+
+</body>
+</html>
